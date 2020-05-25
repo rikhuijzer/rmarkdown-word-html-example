@@ -1,0 +1,58 @@
+---
+title: "My example analysis"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+author: 
+  - name: "Rik Huijzer"
+    affiliation: "1"
+    corresponding: yes # Define only one corresponding author
+    address: "Faculteit Gedrags- en Maatschappijwetenschappen. Grote Kruisstraat 2/1 9712 TS. Groningen."
+    email: "t.h.huijzer@rug.nl"
+affiliation:
+  - id: "1"
+    institution: "University of Groningen"
+header-includes:
+  - \usepackage{amsmath}
+bookdown::html_document2:
+  # The CSS changes font and hides author affiliation.
+  info: false
+  css: style.css
+  toc: true
+  toc_float: false
+    # collapsed: false
+  toc_depth: 2
+  fig_caption: true
+  number_sections: false
+  theme: cosmo        
+  highlight: kate
+  df_print: kable
+  code_folding: show
+  mathjax: default
+papaja::apa6_docx:
+  csl: "apa.csl"
+  documentclass: "apa7"
+  toc: false
+bibliography: references.bib
+---
+
+```{r, echo=F}
+source("helpers.R")
+```
+
+```{asis, eval=(out.format=="html")}
+<i>This text is available as a [Microsoft Word document](./analysis.docx).
+It is also possible to inspect the [R Markdown source code](./analysis.Rmd) and [version history](https://github.com/rikhuijzer/rmarkdown-word-html-example/commits/master).</i>
+```
+
+```{r child="introduction.Rmd"}
+```
+
+# Method
+Here we use an example reference [@osc2012open] and some code:
+
+```{r}
+x <- 5
+(y <- x + 1)
+x
+```
+
+# References
